@@ -4,26 +4,8 @@ services:
 
   frontend:
     container_name: dumbflix-frontend
-    image: lolrandom:1.0
+    image: alvindra/action-20-dumbflix:production
     stdin_open: true
-    build: ./dumbflix-frontend
     ports:
       - "3000:3000"
-    networks:
-      - coba_default
 
-  database:
-    container_name: sql-db
-    image: mysql:5.7
-    env_file:
-      - .env
-    volumes:
-      - ~/mysql-data:/var/lib/mysql
-    ports:
-      - "3306:3306"
-    networks:
-      - coba_default
-
-networks:
-  coba_default:
-    external: true  
