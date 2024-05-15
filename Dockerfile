@@ -4,9 +4,7 @@ WORKDIR /app
 
 COPY . .
 
-RUN npm install seque
-RUN npx sequelize 
-RUN npm
+RUN npm install
 
 EXPOSE 3000
 
