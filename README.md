@@ -6,3 +6,4 @@ How to deploy dumbflix-frontend :
 - Deploy dumbflix-frontend with port 3000
 
 Test CICD
+trigger
