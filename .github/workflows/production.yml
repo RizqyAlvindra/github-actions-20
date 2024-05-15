@@ -28,5 +28,19 @@ jobs:
     - name: Push Image To Registry
       run: docker push ${{ secrets.DOCKER_IMAGE }}
 
+  deploy:
+
+    runs-on: ubuntu-latest
     
-        
+    steps:
+    - name: Execute SSH
+      uses: appleboy/ssh-action@v1.0.3
+      with:
+        host: ${{ secrets.HOST }}
+        username: ${{ secrets.USERNAME }}
+        key: ${{ secrets.KEY }}
+        port: 22
+        script: |
+           docker pull ${{ secrets.DOCKER_IMAGE }}
+           docker compose down 
+           docker compose up -d
