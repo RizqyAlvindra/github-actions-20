@@ -1,0 +1,32 @@
+name: production
+
+on:
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout SCM
+      uses: actions/checkout@v4 #git pull
+    
+    - name: Build the Docker image
+      run: docker build -t alvindra/action-20-dumbflix:production .
+
+    - name: Login To Docker Registry
+      uses: docker/login-action@v3
+      with:
+        username: alvindra
+        password: lolradom123
+
+    - name: Push Image To Registry
+      run: docker push alvindra/action-20-dumbflix:production
+
+    
+        
